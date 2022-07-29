@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <script>
+            function resetForm()
+            {
+            var res = confirm("Do you want to reset the values") 
+                if (res)
+                {
+                    document.querySelector("form").reset();;
+                }
+            }
+            function resetLoginForm()
+            {
+            var res = confirm("Do you want to reset the values") 
+            if (res)
+            {
+                document.getElementById("form-login").reset();;
+            }
+
+            }
+          </script>
+    </head>     
+    <body>
+        <p></p>
+
+      
+        <div class="container">
+        <table width="100%" border="1">
+            <tr bgcolor="black" >
+                <td><font color="white">Update 24X7 Admin Sign In</font></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <form method="post" action="/register/user">
+                            <table border="0" align="center" width="80%">
+                             <tr>
+                                <td align="center">
+                                    <b>REGISTER</b></td> 
+                                </td>
+                                <tr>
+                                    <td>Name</td>
+                                </tr>
+
+                                <tr>
+                                    <td>  
+                                        <input type="text" class="form-control" name="username" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="email" class="form-control" name="emailid" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="password" class="form-control" name="userpassword" required>
+                                    </td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td><input  class="btn btn-info" type="submit" value="Register">
+                                        <input  class="btn btn-warning" type="button" onclick="resetForm()" value="reset"></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                             </tr>       
+                            </table>
+                        </form>
+                    
+
+                        </div>
+                        <div class="col-xs-6">
+                            <form method="post" id="form-login" action="/register/isvalid">
+                            <table border="0" align="center" width="80%">
+                                <tr>
+                                   <td>
+                                   <b>LOGI IN</b>   
+                                   </td>
+                                </tr>                                     
+                                <tr>
+                                    <td>Email</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="email" class="form-control" name="emailid" >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="password" class="form-control" name="userpassword" >
+                                    </td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                                <tr>
+                                    <td><input  class="btn btn-success" type="submit" value="Login">
+                                        <input  class="btn btn-danger" type="button" onclick="resetLoginForm()" value="RESET" ></td>
+                                </tr>
+                                <tr><td>&nbsp;</td></tr>
+                             </tr>  
+                               </table>
+                               </form>
+                        </div>
+                      </div>
+                    
+                </td>
+            </tr>
+        </table>
+        </div>
+      </body>
+</html>

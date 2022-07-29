@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <script>
+            function resetForm()
+            {
+            var res = confirm("Do you want to reset the values") 
+            if (res)
+            {
+                document.querySelector("form").reset();;
+            }
+            }
+          </script>
+    </head>     
+    <body>
+        <%- include('adminmenu')%>  
+        <p></p>
+     
+        <div class="container">
+                <table width="100%" border="0">
+                    <tr>
+                        <td>
+                        
+                            <div class="alert alert-success" role="alert">
+                                  <%=message%>
+                              
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <form method="post" name="form-addnews" action="/admin/insert">
+                                <div class="col-xs-12">
+                                    <table border="0" align="center" width="80%">
+                                     <tr>
+                                        <td align="center">
+                                            <b>Add NEWS</b></td> 
+                                        </td>
+                                        <tr>
+                                            <td>Title</td>
+                                        </tr>
+        
+                                        <tr>
+                                            <td>  
+                                                <input type="text" class="form-control" name="newstitle">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control" name="newsdesc" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Url</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control" name="newsurl" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Published At</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" class="form-control" name="newspublishat" >
+                                            </td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                        <tr>
+                                            <td align="center"><input  class="btn btn-info" type="submit" value="Add">
+                                                <input  class="btn btn-warning" type="button" onclick="resetForm()" value="RESET"></td>
+                                        </tr>
+                                        <tr><td>&nbsp;</td></tr>
+                                     </tr>       
+                 </table>
+         </div>
+        </form>
+      </body>
+</html>

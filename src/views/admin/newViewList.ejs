@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="/css/styles.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+          function SearchData(e)
+          {
+            var txt = document.getElementById("txtsearch");
+           console.log(txt.value)
+           $.ajax({
+            type: 'GET',
+            url: '/admin/editnews/query?searchtext='+txt,
+            method: 'get',            
+            success : function(data) 
+                      {
+                         console.log(JSON.stringify(data)) 
+                        // window.location.reload()
+                      },
+            error : function(){
+                    alert('no data deleted')
+                }
+          })
+          }
+
+          function Delete_click(id)
+          {
+            var conf = confirm("Are you sure you want to delete?")
+            if (conf)
+            {
+              var body = {"_id":id}              
+              console.log(body)
+              $.ajax({
+                type: 'PUT',
+                url: '/admin/deleteNews',
+                method: 'put',
+                data: body,
+                success : function(data) 
+                          {
+                             console.log(JSON.stringify(data)) 
+                             window.location.reload()
+                          },
+                error : function(){
+                        alert('no data deleted')
+                    }
+              })
+            }
+          }
+        </script>
+    </head>     
+    <body>
+        <%- include('adminmenu')%>  
+        <p></p>      
+        <div class="container">
+          <div class="page-header" align="center"><h3>News List</h3></div>
+          <div class="panel">
+            <div class="panel-body" align="right">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label for="exampleInputName2">Search</label>
+                  <input type="text" class="form-control" id="txtsearch" 
+                  placeholder="Search" onkeypress="SearchData()">
+                </div>
+              </form>
+            </div>
+          </div> 
+          <div class="table-responsive">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th bgcolor="Black" ><font color=white>Title</font></th>
+                          <th bgcolor="Black" ><font color=white>Description</font></th>
+                          <th bgcolor="Black" ><font color=white>Published At</font></th>
+                          <th bgcolor="Black" ><font color=white>Edit/Delete</font></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for (i=0;i<newsData.length;i++) { %>
+                        <tr>
+                          <th scope="row"><%=newsData[i].title%>
+                          </th>
+                          <td><%=newsData[i].description%></td>
+                          <td><%=newsData[i].publishat%></td>
+                          <td>
+                            <input type="button" name="edit<%=i%>" class="btn btn-warning" value="Edit" />
+                            <input type="button"  name="delete<%=i%>" value="Delete" class="btn btn-danger" 
+                             onclick="Delete_click('<%=newsData[i]._id%>')"/>
+                          </td>
+                        </tr>
+                        <%}%>             
+
+                      </tbody>
+                </table>
+              </div>          
+        </div>
+      </body>
+</html>
